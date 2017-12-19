@@ -39,6 +39,7 @@
             height:0;
             animation-name: lay;
             animation-duration: 300s;
+            animation-delay: 10s;
         }
         @keyframes fall {
             100% {
@@ -53,29 +54,29 @@
         }
     </style>
 
-    <body>    
-        
-        <div class="ground"></div>
-
-    </body>
-
-    <script
-        src="https://code.jquery.com/jquery-3.2.1.min.js"
-        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-        crossorigin="anonymous">
-    </script>
+    <body></body>
 
     <script>
     
     (function(){
 
+        var appendHtmlToBody = function(html){
+            var template = document.createElement('div');
+            template.innerHTML = html;
+            document.body.appendChild(template.firstChild);
+        }
+
+        var createGround = function(){
+            var groundHtml = '<div class="ground"></div>';
+            appendHtmlToBody(groundHtml);
+        }
+
         var createFlakes = function(numFlakes){
             var createFlake = function(){
                 var left = Math.ceil(Math.random() * 100);
                 var type = Math.ceil(Math.random() * 3);
-                var flake = $('<div class="flake flake-' + type + '" style="left:' + left + '%"><div>');
-                console.log({left: left, type: type});
-                $('body').append(flake);
+                var flakeHtml = '<div class="flake flake-' + type + '" style="left:' + left + '%"><div>';
+                appendHtmlToBody(flakeHtml);
             };
 
             for(var i = 1; i < numFlakes; i++){
@@ -85,13 +86,14 @@
         }
 
         var startup = function(){
+            createGround();
+            createFlakes(100); 
             setInterval(function(){
                 createFlakes(100);
-            }, 20000);
-            createFlakes(100);          
+            }, 20000);       
         }
 
-        $(startup);
+        window.onload = startup;
 
     })();
     
