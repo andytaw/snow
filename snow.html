@@ -14,6 +14,7 @@
             animation-name: fall;
             animation-timing-function: linear;
             animation-iteration-count: infinite;
+            z-index:999999;
         }
         .flake-1{
             width:2px;
@@ -40,6 +41,7 @@
             animation-name: lay;
             animation-duration: 300s;
             animation-delay: 10s;
+            z-index:999999;
         }
         @keyframes fall {
             100% {
@@ -61,9 +63,9 @@
     (function(){
 
         var appendHtmlToBody = function(html){
-            var template = document.createElement('div');
-            template.innerHTML = html;
-            document.body.appendChild(template.firstChild);
+            var elem = document.createElement('div');
+            elem.innerHTML = html;
+            document.body.appendChild(elem.firstChild);
         }
 
         var createGround = function(){
