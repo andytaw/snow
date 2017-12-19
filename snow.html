@@ -1,0 +1,101 @@
+<html>
+    <head>
+        <title>Snow</title>
+    </head>
+
+    <style>
+        body{
+            background: #333;
+        }
+        .flake{
+            background: #444;
+            position:fixed;
+            top:-10%;
+            animation-name: fall;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+        .flake-1{
+            width:2px;
+            height:2px;
+            animation-duration: 20s;            
+        }
+        .flake-2{
+            width:3px;
+            height:4px;
+            animation-duration: 15s;
+        }
+        .flake-3{
+            width:4px;
+            height:4px;
+            animation-duration: 10s;
+        }
+        .ground{
+            background: #fff;
+            position:fixed;
+            left:0;
+            bottom:0;
+            width:100%;
+            height:0;
+            animation-name: lay;
+            animation-duration: 300s;
+        }
+        @keyframes fall {
+            100% {
+                background-color: #fff;
+                top:110%;
+            }
+        }
+        @keyframes lay {
+            100% {
+                height:100%;
+            }
+        }
+    </style>
+
+    <body>    
+        
+        <div class="ground"></div>
+
+    </body>
+
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+
+    <script>
+    
+    (function(){
+
+        var createFlakes = function(numFlakes){
+            var createFlake = function(){
+                var left = Math.ceil(Math.random() * 100);
+                var type = Math.ceil(Math.random() * 3);
+                var flake = $('<div class="flake flake-' + type + '" style="left:' + left + '%"><div>');
+                console.log({left: left, type: type});
+                $('body').append(flake);
+            };
+
+            for(var i = 1; i < numFlakes; i++){
+                var delay = Math.ceil(Math.random() * 20000);
+                setTimeout(createFlake, delay);
+            }
+        }
+
+        var startup = function(){
+            setInterval(function(){
+                createFlakes(100);
+            }, 20000);
+            createFlakes(100);          
+        }
+
+        $(startup);
+
+    })();
+    
+    </script>
+
+
+</html>
