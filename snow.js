@@ -1,6 +1,6 @@
 (function(){
 
-    var style = 'body{background: #333;}.flake{background: #444;position:fixed;top:-10%;animation-name: fall;animation-timing-function: linear;animation-iteration-count: infinite;z-index:999999;}.flake-1{width:2px;height:2px;animation-duration: 20s;}.flake-2{width:3px;height:4px;animation-duration: 15s;}.flake-3{width:4px;height:4px;animation-duration: 10s;}.ground{background: #fff;position:fixed;left:0;bottom:0;width:100%;height:0;animation-name: lay;animation-duration: 300s;animation-delay: 10s;z-index:999999;}@keyframes fall {100% {background-color: #fff;top:110%;}}@keyframes lay {100% {height:100%;}}';
+    var style = '.flake{background: #444;position:fixed;top:-10%;animation-name: fall;animation-timing-function: linear;animation-iteration-count: infinite;z-index:999999;}.flake-1{width:2px;height:2px;animation-duration: 20s;}.flake-2{width:3px;height:4px;animation-duration: 15s;}.flake-3{width:4px;height:4px;animation-duration: 10s;}.ground{background: #fff;position:fixed;left:0;bottom:0;width:100%;height:0;animation-name: lay;animation-duration: 300s;animation-delay: 10s;z-index:999999;}@keyframes fall {100% {background-color: #fff;top:110%;}}@keyframes lay {100% {height:100%;}}';
 
     var appendHtmlToBody = function(html){
         var elem = document.createElement('div');
